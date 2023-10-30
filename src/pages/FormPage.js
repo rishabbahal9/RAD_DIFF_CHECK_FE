@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, TextField, Button, CssBaseline } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 import * as reportService from "./../services/report";
-
 import * as logger from "./../utils/logger";
 
 const FormPage = (props) => {

@@ -18,7 +18,7 @@ const FormSubmit = (props) => {
     // Setting component state
     setTemplateContent(data?.templateReport);
     setUserContent(data?.formData?.userReportContent);
-  }, []);
+  }, [location]);
 
   const returnMethod = () => {
     navigate("/");

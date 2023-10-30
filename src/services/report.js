@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 
 import * as logger from "./../utils/logger";
 
@@ -6,8 +6,7 @@ export const getTemplateFromId = async (templateId) => {
   logger.log("Get template service method");
   logger.log("Received templateId: " + templateId);
 
-  const textOutput = String.raw
-`EXAM:
+  const textOutput = String.raw`EXAM:
 CT [_laterality_] [Generic Bone], [without or with] IV contrast
 
 CLINICAL HISTORY:
