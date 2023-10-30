@@ -11,13 +11,15 @@ const FormSubmit = (props) => {
 
   const [templateContent, setTemplateContent] = useState(undefined);
   const [userContent, setUserContent] = useState(undefined);
-
+  
   useEffect(() => {
     const data = location.state;
     logger.log(data);
     // Setting component state
     setTemplateContent(data?.templateReport);
-    setUserContent(data?.formData?.userReportContent);
+    logger.log("data?.formData?.reportText")
+    logger.log(data?.reportText)
+    setUserContent(data?.reportText);
   }, []);
 
   const returnMethod = () => {
