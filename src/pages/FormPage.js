@@ -1,12 +1,14 @@
 import React from "react";
-import { Container, TextField, Button } from "@mui/material";
+import { Container, TextField, Button ,CssBaseline} from "@mui/material";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 import * as reportService from "./../services/report";
 
 import * as logger from "./../utils/logger";
 
 const FormPage = (props) => {
+  const navigate = useNavigate();
   //Form
   const {
     register,
@@ -22,6 +24,9 @@ const FormPage = (props) => {
       formData.templateId
     );
     logger.log(templateReport);
+    navigate("/submit", {
+      state: { formData: formData, templateReport: templateReport },
+    });
   };
 
   return (
@@ -30,7 +35,10 @@ const FormPage = (props) => {
         style={{ marginTop: "20px" }}
         component="form"
         onSubmit={handleSubmit((data) => handleSubmitForm(data))}
+        maxWidth="sm"
+        background="primary"
       >
+        <CssBaseline />
         <TextField
           id="outlined-basic"
           label="Template Id"
