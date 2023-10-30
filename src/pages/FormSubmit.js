@@ -17,9 +17,7 @@ const FormSubmit = (props) => {
     logger.log(data);
     // Setting component state
     setTemplateContent(data?.templateReport);
-    logger.log("data?.formData?.reportText")
-    logger.log(data?.reportText)
-    setUserContent(data?.reportText);
+    setUserContent(data?.formData?.userReportContent);
   }, []);
 
   const returnMethod = () => {

@@ -16,14 +16,7 @@ const FormPage = (props) => {
     formState: { errors },
     reset,
   } = useForm();
-  
-  const [reportText, setReportText] = useState(undefined);
-  
-  const textChangeEvent = (event) => {
-    logger.log("event");
-    logger.log(event.target.value);
-    setReportText(event.target.value);
-  };
+
 
   const handleSubmitForm = async (formData) => {
     logger.log("HandleSubmitMethod");
@@ -36,7 +29,6 @@ const FormPage = (props) => {
       state: {
         formData: formData,
         templateReport: templateReport,
-        reportText: String.raw`${reportText}`,
       },
     });
   };
@@ -67,14 +59,11 @@ const FormPage = (props) => {
           rows={20}
           fullWidth
           style={{ marginTop: "20px" }}
-          // {...register("userReportContent", { required: true })}
-          // error={Boolean(errors.userReportContent)}
-          // helperText={
-          //   errors.userReportContent ? "Error: Report content required" : ""
-          // }
-          onChange={(event) => {
-            textChangeEvent(event);
-          }}
+          {...register("userReportContent", { required: true })}
+          error={Boolean(errors.userReportContent)}
+          helperText={
+            errors.userReportContent ? "Error: Report content required" : ""
+          }
         />
 
         <Button
