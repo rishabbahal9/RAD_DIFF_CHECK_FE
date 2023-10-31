@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+#  RADPAIR ASSIGNMENT FRONTEND
+### Github links
+Frontend code: https://github.com/rishabbahal9/RADPAIR_ASSIGNMENT_FE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+FRONTEND code is written in ReactJS. This React project is created with create-react-app. It contains 3 pages: Form page, submit page and page not found.
 
-## Available Scripts
+Irrespective of input in template Id, you will get report template. Both inputs are required to submit the form. On submission, this frontend app used backend end point`<backend link>/get-report-template` to access the report template. Then we navigate to form submit page where report template and user's report input is compared.
 
-In the project directory, you can run:
+## How to run code
 
-### `npm start`
+To run this code with frontend complete, use docker-compose.yaml that has been sent on email with Readme.md document for reference. It takes care of everything.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### To run this code individually via docker
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ 1. Clone this repository
+ 2. Create .env.development.local and .env.production.local files and populate as per .env.example.
+  
+ **Development mode**
+ 1. Make sure Docker is active on your computer. Create an image using:
+ ```shell
+ docker build -f Dockerfile.dev -t radpair-fe:1 .
+ ```
+2. Create a container and run with following command:
+```shell
+docker run -d -it --rm -p 3002:3000 --name radpair-container radpair-fe:1
+```
+**Production mode**
+ 1. Make sure Docker is active on your computer. Create an image using:
+ ```shell
+ docker build -t radpair-fe:2 . 
+ ```
+2. Create a container and run with following command:
+```shell
+docker run -d -it --rm -p 3003:80 --name radpair-prod-container radpair-fe:2
+```
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### To run this code individually without docker
+1. Clone this repository
+2. Download nodejs (version 16).
+3. Run the following command on terminal to install the dependencies:
+	 ```shell 
+	 npm install --legacy-peer-deps
+	 ```
+4. Create .env.development.local and .env.production.local files and populate as per .env.example
+5. To run the application use following commands:
+	```shell
+	npm start
+	```
+6. You should be able to access the endpoint on `http://localhost:<PORT>`
