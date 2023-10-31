@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, TextField, Button, CssBaseline } from "@mui/material";
+import React, { useState } from "react";
+import { Container, TextField, Button, CssBaseline, Alert } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
@@ -16,20 +16,26 @@ const FormPage = (props) => {
     reset,
   } = useForm();
 
+  const [showError, setShowError] = useState(false);
 
   const handleSubmitForm = async (formData) => {
     logger.log("HandleSubmitMethod");
     logger.log(formData);
-    const templateReport = await reportService.getTemplateFromId(
-      formData.templateId
-    );
-    logger.log(templateReport);
-    navigate("/submit", {
-      state: {
-        formData: formData,
-        templateReport: templateReport,
-      },
-    });
+    try {
+      const templateReport = await reportService.getTemplateFromId(
+        formData.templateId
+      );
+      setShowError(false);
+      navigate("/submit", {
+        state: {
+          formData: formData,
+          templateReport: templateReport,
+        },
+      });
+    } catch (err) {
+      logger.error(err.message);
+      setShowError(true);
+    }
   };
 
   return (
@@ -82,6 +88,9 @@ const FormPage = (props) => {
         >
           Reset
         </Button>
+        {showError && (
+          <Alert severity="error">Error: unable to extract report template from API.</Alert>
+        )}
       </Container>
     </>
   );
