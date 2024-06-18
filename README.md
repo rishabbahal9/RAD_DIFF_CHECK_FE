@@ -1,4 +1,4 @@
-#  RADPAIR ASSIGNMENT FRONTEND
+#  RAD DIFF CHECK FRONTEND
 ### Github links
 Frontend code: https://github.com/rishabbahal9/RADPAIR_ASSIGNMENT_FE
 
